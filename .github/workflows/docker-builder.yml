@@ -37,12 +37,11 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: dellear/jd_seckill:latest
+          tags: dellear/tg:latest
       -
         name: Update repo description
         uses: peter-evans/dockerhub-description@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: dellear/jd_seckill
-© 2021 GitHub, Inc.
+          repository: dellear/tg

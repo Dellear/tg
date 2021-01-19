@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+crond
+
 # cd /root/AutomationTTnode && git pull
 
 # if [ -f /root/AutomationTTnode/crontab-custom.list ]
