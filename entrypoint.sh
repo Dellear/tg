@@ -12,7 +12,7 @@ then
 
 else
   echo -e "没有检测到crontab.list文件，暂无定时任务"
-  tail -f /dev/null
 fi
 
+tail -f /dev/null
 exec "$@"
