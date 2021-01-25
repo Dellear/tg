@@ -2,8 +2,7 @@ FROM centos:7
 COPY ./entrypoint.sh /entrypoint.sh
 ADD ./tg.tar.gz /tg
 ENV TZ=Asia/Shanghai
-RUN yum update -y nss curl libcurl \
-    && yum -y install lua-devel \
+RUN yum -y install lua-devel \
                       openssl-devel \
                       libconfig-devel \
                       readline-devel \
