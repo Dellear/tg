@@ -31,6 +31,7 @@ RUN yum update -y nss curl libcurl \
     && yum clean all \
     && rm -rf /var/cache/ \
     && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
-    && chmod +x /entrypoint.sh
-WORKDIR /tg
+    && chmod +x /entrypoint.sh \
+    && mkdir /config
+WORKDIR /config
 ENTRYPOINT /entrypoint.sh
