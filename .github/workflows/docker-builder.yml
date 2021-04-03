@@ -2,9 +2,9 @@ name: Docker Image Publish
 
 on:
   push:
-    branches: [ main ]
+    branches: [ centos7 ]
   pull_request:
-    branches: [ main ]
+    branches: [ centos7 ]
 
 jobs:
 
@@ -37,7 +37,7 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: dellear/tg:latest
+          tags: dellear/tg:centos7
       -
         name: Update repo description
         uses: peter-evans/dockerhub-description@v2
