@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-crond
+cron
 
 if [ -f /config/crontab.list ]
 then
@@ -15,4 +15,5 @@ else
 fi
 
 tail -f /dev/null
+
 exec "$@"
