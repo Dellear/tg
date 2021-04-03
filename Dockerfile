@@ -1,7 +1,7 @@
 FROM ubuntu:latest AS build
-RUN apt update && DEBIAN_FRONTEND=noninteractive apt -y install libreadline-dev libconfig-dev libssl-dev libevent-dev libjansson-dev libpython2-dev make zlib1g-dev libgcrypt20-dev git
+RUN apt update && DEBIAN_FRONTEND=noninteractive apt -y install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev libevent-dev libjansson-dev libpython2-dev make zlib1g-dev libgcrypt20-dev git
 RUN git clone --recursive https://github.com/vysheng/tg.git /tg 
-RUN cd /tg && ./configure --disable-openssl --disable-liblua --prefix=/usr CFLAGS="$CFLAGS -w" && CGO_ENABLED=0 make
+RUN cd /tg && ./configure --disable-liblua --disable-openssl --prefix=/usr CFLAGS="$CFLAGS -w" && make
 
 
 FROM ubuntu:latest
