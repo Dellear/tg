@@ -17,8 +17,7 @@ RUN apt update \
                 libreadline-dev \
     && ln -sf /usr/share/zoneinfo/$TZ /etc/localtime \
     && echo $TZ > /etc/timezone \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /var/log/* \
+    && rm -rf /var/lib/apt/lists/* /var/cache/* /var/log/* \
     && chmod +x /entrypoint.sh
 WORKDIR /config
 COPY --from=build /tg/bin/telegram-cli /usr/bin/tg
