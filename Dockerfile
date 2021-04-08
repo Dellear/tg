@@ -10,6 +10,7 @@ ENV TZ=Asia/Shanghai \
     DEBIAN_FRONTEND=noninteractive
 RUN apt update \
     && apt -y install cron \
+                curl \
                 nano \
                 libevent-dev \
                 libjansson-dev \
