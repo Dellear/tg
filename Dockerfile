@@ -21,7 +21,6 @@ RUN apt update \
     && echo $TZ > /etc/timezone \
     && rm -rf /var/lib/apt/lists/* /var/cache/* /var/log/* \
     && sed -i 's/#cron/cron/g' /etc/rsyslog.d/50-default.conf \
-    && service rsyslog restart \
     && chmod +x /entrypoint.sh
 WORKDIR /config
 COPY --from=build /tg/bin/telegram-cli /usr/bin/tg
