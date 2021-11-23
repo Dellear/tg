@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# 启动日志服务
+service rsyslog start
+
 if [ -f /config/crontab.list ]; then
   echo -e "存在crontab.list，使用crontab.list添加定时任务"
   crontab /config/crontab.list

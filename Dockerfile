@@ -22,7 +22,6 @@ RUN apt update \
     && rm -rf /var/lib/apt/lists/* /var/cache/* /var/log/* \
     && sed -i 's/#cron/cron/g' /etc/rsyslog.d/50-default.conf \
     && sed -i 's/module(load="imklog"/#module(load="imklog"/g' /etc/rsyslog.conf \
-    && service rsyslog start \
     && chmod +x /entrypoint.sh
 WORKDIR /config
 COPY --from=build /tg/bin/telegram-cli /usr/bin/tg
