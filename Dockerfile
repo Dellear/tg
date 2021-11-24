@@ -20,8 +20,9 @@ RUN apt update \
     && ln -sf /usr/share/zoneinfo/$TZ /etc/localtime \
     && echo $TZ > /etc/timezone \
     && rm -rf /var/lib/apt/lists/* /var/cache/* /var/log/* \
-    && sed -i 's/#cron/cron/g' /etc/rsyslog.d/50-default.conf \
-    && sed -i 's/module(load="imklog"/#module(load="imklog"/g' /etc/rsyslog.conf \
+    && sed -i 's/^#\(cron\)/\1/g' /etc/rsyslog.d/50-default.conf \
+    && sed -i 's/^module(load="imklog"*/#&/g' /etc/rsyslog.conf \
+    && sed -i '/root/d' /etc/crontab \
     && chmod +x /entrypoint.sh
 WORKDIR /config
 COPY --from=build /tg/bin/telegram-cli /usr/bin/tg
