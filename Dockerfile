@@ -23,6 +23,7 @@ RUN apt update \
     && sed -i 's/^#\(cron\)/\1/g' /etc/rsyslog.d/50-default.conf \
     && sed -i 's/^module(load="imklog"*/#&/g' /etc/rsyslog.conf \
     && sed -i '/root/d' /etc/crontab \
+    && sed -i '/root/d' /etc/cron.d/e2scrub_all \
     && chmod +x /entrypoint.sh
 WORKDIR /config
 COPY --from=build /tg/bin/telegram-cli /usr/bin/tg
