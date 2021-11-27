@@ -7,7 +7,7 @@ RUN git clone --recursive https://github.com/vysheng/tg.git /tg
 RUN cd /tg && ./configure --disable-liblua --disable-openssl --prefix=/usr CFLAGS="$CFLAGS -w" && make
 
 
-FROM alpine:3.13
+FROM alpine:3.7
 MAINTAINER Dellear <dellear66@gmail.com>
 COPY ./entrypoint.sh /entrypoint.sh
 ENV TZ=Asia/Shanghai \
@@ -21,6 +21,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
                             tzdata \
                             curl \
                             nano \
+                            procps \
                             libevent \
                             jansson \
                             libconfig \
