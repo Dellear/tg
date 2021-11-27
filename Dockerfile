@@ -10,12 +10,16 @@ RUN cd /tg && ./configure --disable-liblua --disable-openssl --prefix=/usr CFLAG
 FROM alpine:3.7
 MAINTAINER Dellear <dellear66@gmail.com>
 COPY ./entrypoint.sh /entrypoint.sh
-ENV TZ=Asia/Shanghai
+ENV TZ=Asia/Shanghai \
+    LANG=zh_CN.UTF-8 \
+    PS1="\u@\h:\w# " \
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     && apk update -f \
     && apk upgrade \
     && apk add --no-cache -f bash \
     tzdata \
+    curl \
+    nano \
     libevent \
     jansson \
     libconfig \
