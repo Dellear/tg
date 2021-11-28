@@ -38,8 +38,8 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           push: true
           tags: |
-            dellear/tg:latest
             dellear/tg:alpine
+            dellear/tg:latest
       -
         name: Update repo description
         uses: peter-evans/dockerhub-description@v2
