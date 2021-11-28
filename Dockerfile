@@ -8,8 +8,8 @@ RUN cd /tg && ./configure --disable-liblua --disable-openssl --prefix=/usr CFLAG
 
 
 FROM alpine:3.7
-MAINTAINER Dellear <dellear66@gmail.com>
 COPY ./entrypoint.sh /entrypoint.sh
+LABEL maintainer="Dellear <dellear66@gmail.com>"
 ENV TZ=Asia/Shanghai \
     LANG=zh_CN.UTF-8 \
     PS1="\u@\h:\w# "
