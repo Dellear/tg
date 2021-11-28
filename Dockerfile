@@ -1,13 +1,13 @@
-FROM alpine:3.7 AS build
+FROM alpine:3.10 AS build
 RUN apk --no-cache add readline readline-dev libconfig libconfig-dev lua \
                        lua-dev luajit-dev luajit openssl openssl-dev \
                        build-base libevent libevent-dev libgcrypt-dev \
-                       jansson jansson-dev git
+                       jansson jansson-dev zlib-dev git
 RUN git clone --recursive https://github.com/vysheng/tg.git /tg 
 RUN cd /tg && ./configure --disable-liblua --disable-openssl --prefix=/usr CFLAGS="$CFLAGS -w" && make
 
 
-FROM alpine:3.7
+FROM alpine:3.10
 COPY ./entrypoint.sh /entrypoint.sh
 LABEL maintainer="Dellear <dellear66@gmail.com>"
 ENV TZ=Asia/Shanghai \
@@ -21,6 +21,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
                             tzdata \
                             curl \
                             nano \
+                            procps \
                             libevent \
                             jansson \
                             libconfig \
